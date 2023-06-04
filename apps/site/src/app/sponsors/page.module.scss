@@ -1,0 +1,182 @@
+@use "~@/lib/common/styles/hack-variables.scss" as variables;
+
+.sponsorHackuci {
+  margin: 0px 0 40px 0;
+}
+
+.sponsorHackuci input {
+  font-weight: 600;
+  font-size: 20px;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  background: linear-gradient(90deg, #ff928b 0%, #8494da 100%);
+  transition: 300ms;
+  opacity: 1;
+  &:hover {
+    opacity: 85%;
+  }
+}
+
+.sponsorHackuci a {
+  position: relative;
+}
+
+.sponsorAttendees {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  & span {
+    font-size: 48px;
+    padding-left: 10px;
+  }
+}
+
+.zothacksBtn {
+  background: linear-gradient(90deg, #2f9c95 0%, #add8ab 100%) !important;
+}
+
+.sponsorHackGraph {
+  padding-top: 30px;
+}
+
+.sponsorStatImg {
+  width: 60%;
+  margin: 20px;
+}
+
+.sponsorStats {
+  display: inline-block;
+  margin: 100px 0;
+}
+
+.sponsorStat {
+  display: inline-block;
+  margin: 10px 50px;
+  max-width: 140px;
+  vertical-align: text-top;
+}
+
+.sponsorStat p {
+  font-size: 60px;
+  margin: 0;
+}
+
+.sponsorStat label {
+  font-size: 20px;
+  margin: 0;
+}
+
+.sponsorHackuci p {
+  margin: 0;
+}
+
+.sponsorStatHackNumber {
+  padding-top: 110px;
+  padding-left: 10px;
+  text-align: center;
+  font-size: 120px;
+}
+
+.sponsorStatHackLabel {
+  padding-top: 230px;
+  text-align: center;
+  font-size: 60px;
+}
+
+.sponsorContentAnecdote p {
+  margin: 0;
+}
+
+.sponsorContentAnecdote {
+  grid-column: 3;
+  border-radius: 10px;
+  padding: 35px 35px 20px 35px;
+  background-color: variables.$light-grey;
+  margin-bottom: 30px;
+  text-align: left;
+  font-size: 20px;
+}
+
+#Bianca {
+  min-height: 230px;
+  grid-row: 3;
+}
+
+#Lizzie {
+  min-height: 190px;
+}
+
+#Cher {
+  min-height: 200px;
+  grid-row: 7;
+}
+
+.sponsorPrevious {
+  margin-top: 150px;
+  font-size: 36px;
+}
+
+//commit update
+@media screen and (max-width: 1200px) {
+  .sponsorContent {
+    display: block;
+  }
+  .sponsorContentAnecdote {
+    font-size: 20px;
+  }
+  .sponsorContentAnecdote {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .sponsorHackuci input {
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 10px 24px;
+  }
+
+  .sponsorAttendees {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    & img {
+      width: 75px;
+    }
+    & span {
+      font-size: 20px;
+      padding-left: 10px;
+    }
+  }
+
+  .sponsorContent {
+    display: block;
+  }
+  .sponsorHackuci a {
+    margin: 0 20px;
+  }
+  .sponsorStats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0;
+  }
+  .sponsorStat {
+    margin: 10px 12px;
+  }
+  .sponsorStat p {
+    font-size: 40px;
+  }
+  .sponsorStat label {
+    font-size: 16px;
+  }
+  .sponsorContentAnecdote {
+    font-size: 15px;
+  }
+}

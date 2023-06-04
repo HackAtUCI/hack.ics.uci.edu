@@ -1,0 +1,23 @@
+@use "~@/lib/common/styles/hack-variables.scss" as variables;
+
+.contactIcon {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8rem;
+
+  .contactLabel {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.contactIcon img {
+  height: 6rem;
+  width: 6rem;
+}
+
+@media (min-width: 768px) {
+  .contactIcon {
+    margin: 0 0.65rem;
+  }
+}

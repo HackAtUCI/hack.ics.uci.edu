@@ -1,0 +1,39 @@
+@use "~@/lib/common/styles/hack-variables.scss" as variables;
+
+.involvedButton {
+  border-color: transparent;
+  border-radius: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 10px 25px;
+  background-color: variables.$red;
+  color: white;
+  max-width: 10em;
+  position: relative;
+  z-index: 10;
+  text-decoration: none;
+}
+
+.homeContent {
+  font-size: 26px;
+
+  a {
+    color: variables.$darkest-blue;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.homeCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.events {
+  background-color: variables.$light-grey;
+}

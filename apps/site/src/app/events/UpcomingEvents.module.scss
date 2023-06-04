@@ -1,0 +1,34 @@
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+  padding-top: 150px;
+  padding-bottom: 30px;
+}
+
+.noEvents {
+  margin-top: 30px;
+
+  .calendarIcon {
+    width: 128px;
+    height: 146px;
+    margin-bottom: 20px;
+  }
+
+  .stayTuned {
+    font-weight: 400;
+    margin-top: 14px;
+    font-size: 20px;
+  }
+}
+
+.events {
+  $card-width: 480px;
+  $gap-x: 24px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, $card-width);
+  gap: 32px $gap-x;
+  justify-content: center;
+  max-width: $card-width * 3 + $gap-x * 2;
+  margin: 0 auto;
+}
