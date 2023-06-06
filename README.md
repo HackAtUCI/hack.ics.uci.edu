@@ -35,13 +35,15 @@ When running commands, use `pnpm` rather than `npm`.
 
 ### Dependencies
 
-Running the following command will install dependencies for all apps regardless of where it's executed.
+Running the following command will install dependencies for all apps and packages regardless of where it's executed.
 
 ```bash
 pnpm install
 ```
 
-When installing a new dependency, navigate to the app or package directory. If you want to install a package shared by all apps and packages, run the command at the project root. You'll have to use the -w flag (or --workspace-root) to confirm your intention.
+When installing a new dependency for an individual app or package, first navigate to the corresponding directory, then run the `pnpm add` command.
+
+If you want to install a package shared by multiple apps or packages, run the command at the project root. You'll have to use the -w flag (or --workspace-root) to confirm your intention.
 
 ### Build
 
