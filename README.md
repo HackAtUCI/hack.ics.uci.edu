@@ -8,7 +8,7 @@ This monorepo uses [turborepo](https://turbo.build/repo) with [pnpm](https://pnp
 
 A [Next.js](https://nextjs.org/) 13 project that uses the new app router.
 
-This app contains the site for [Hack at UCI](https://hack.ics.uci.edu/).
+This app contains the upcoming rewrite for the main Hack at UCI club site.
 
 The development server runs at `https://localhost:3000`. If this port is taken, the next available port will be used.
 
