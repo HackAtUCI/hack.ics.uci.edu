@@ -13,5 +13,9 @@
     "turbo": "^1.10.1"
   },
   "packageManager": "pnpm@7.15.0",
-  "name": "hack.ics.uci.edu"
+  "name": "hack.ics.uci.edu",
+  "dependencies": {
+    "lucide": "^0.236.0",
+    "simple-icons": "^9.0.0"
+  }
 }

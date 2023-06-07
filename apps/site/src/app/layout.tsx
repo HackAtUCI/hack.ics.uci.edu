@@ -32,6 +32,8 @@ export default function RootLayout({
       <body className={poppins.className}>
         <Nav />
         {children}
+        {/* https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#:~:text=Async%20Server%20Component%20TypeScript%20Error */}
+        {/* @ts-expect-error Async Server Component */}
         <Footer />
       </body>
     </html>

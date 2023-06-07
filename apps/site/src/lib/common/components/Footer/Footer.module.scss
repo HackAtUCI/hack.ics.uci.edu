@@ -2,23 +2,23 @@
 
 .footer {
   width: 100%;
+  padding: 16px 0;
   background: variables.$blue-gradient;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 
-  img {
-    filter: brightness(100);
+  a {
     width: 25px;
-    margin: 20px 0;
+
+    img {
+      width: 100%;
+    }
   }
 
   @media screen and (min-width: 768px) {
-    justify-content: center;
-
-    img {
-      width: 40px;
-      margin: 20px 40px;
+    a {
+      width: 36px;
     }
   }
 }

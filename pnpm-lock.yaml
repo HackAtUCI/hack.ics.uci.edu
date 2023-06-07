@@ -1,8 +1,19 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 importers:
 
   .:
+    dependencies:
+      lucide:
+        specifier: ^0.236.0
+        version: 0.236.0
+      simple-icons:
+        specifier: ^9.0.0
+        version: 9.0.0
     devDependencies:
       '@turbo/gen':
         specifier: ^1.9.7
@@ -25,6 +36,12 @@ importers:
       '@radix-ui/react-navigation-menu':
         specifier: ^1.1.2
         version: 1.1.2(react-dom@18.2.0)(react@18.2.0)
+      '@sanity/client':
+        specifier: ^6.1.2
+        version: 6.1.2
+      '@sanity/image-url':
+        specifier: ^1.0.2
+        version: 1.0.2
       '@types/node':
         specifier: 18.16.3
         version: 18.16.3
@@ -43,6 +60,9 @@ importers:
       eslint-config-next:
         specifier: 13.4.0
         version: 13.4.0(eslint@8.39.0)(typescript@5.0.4)
+      lucide-react:
+        specifier: ^0.240.0
+        version: 0.240.0(react@18.2.0)
       next:
         specifier: 13.4.0
         version: 13.4.0(react-dom@18.2.0)(react@18.2.0)(sass@1.62.1)
@@ -61,6 +81,9 @@ importers:
       typescript:
         specifier: 5.0.4
         version: 5.0.4
+      zod:
+        specifier: ^3.21.4
+        version: 3.21.4
     devDependencies:
       clsx:
         specifier: ^1.2.1
@@ -71,6 +94,9 @@ importers:
 
   apps/studio:
     dependencies:
+      '@sanity/icons':
+        specifier: ^2.3.1
+        version: 2.3.1(react@18.2.0)
       '@sanity/vision':
         specifier: ^3.11.5
         version: 3.11.5(@babel/runtime@7.22.3)(@codemirror/lint@6.2.1)(@codemirror/state@6.2.1)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.0.3)(codemirror@6.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.9)
@@ -89,6 +115,9 @@ importers:
       styled-components:
         specifier: ^5.3.9
         version: 5.3.9(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
+      title-case:
+        specifier: ^3.0.3
+        version: 3.0.3
     devDependencies:
       '@sanity/eslint-config-studio':
         specifier: ^2.0.1
@@ -6446,6 +6475,18 @@ packages:
     dependencies:
       yallist: 4.0.0
 
+  /lucide-react@0.240.0(react@18.2.0):
+    resolution: {integrity: sha512-75lFCbrvSs1ixJUwDN2XLcUTMUIRV8bN/TrBjZdcGHIZNoczLQRnb7zJSvzZhCFyMymT6pXNBB61oaE1JerlrA==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /lucide@0.236.0:
+    resolution: {integrity: sha512-KZQVUl9qy/JcrTLxjtziO7KorjNQpOJqw5FpJG5uRK07S7FivOAoE4Dfu/ig5n5WQvxF9+PLYD1J7ylJMxYP+A==}
+    dev: false
+
   /magic-string@0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
     engines: {node: '>=12'}
@@ -7865,6 +7906,11 @@ packages:
   /signal-exit@3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
 
+  /simple-icons@9.0.0:
+    resolution: {integrity: sha512-UH/p2KveJCntShjJedJ7qXkGDxdIpSEayyCNUGJ9KUMYfFEDn3OGp12dIYLKZ3mpyeUOTn2dhWrTGxm/sDKnFw==}
+    engines: {node: '>=0.12.18'}
+    dev: false
+
   /simple-wcswidth@1.0.1:
     resolution: {integrity: sha512-xMO/8eNREtaROt7tJvWJqHBDTMFN4eiQ5I4JRMuilwfnFcV5W9u7RUkueNkdw0jPqGMX36iCywelS5yilTuOxg==}
     dev: false
@@ -8213,6 +8259,12 @@ packages:
       no-case: 2.3.2
       upper-case: 1.1.3
     dev: true
+
+  /title-case@3.0.3:
+    resolution: {integrity: sha512-e1zGYRvbffpcHIrnuqT0Dh+gEJtDaxDSoG4JAIpq4oDFyooziLBIiYQv0GBT4FUAnUop5uZ1hiIAj7oAF6sOCA==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
 
   /titleize@3.0.0:
     resolution: {integrity: sha512-KxVu8EYHDPBdUYdKZdKtU2aj2XfEx9AfjXxE/Aj0vT06w2icA09Vus1rh6eSu1y01akYg6BjIK/hxyLJINoMLQ==}
