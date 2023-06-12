@@ -34,7 +34,7 @@ export default defineConfig({
               ),
             S.divider(),
             ...S.documentTypeListItems().filter(
-              (listItem) => !['event'].includes(listItem.getId()!)
+              (listItem) => !['socials'].includes(listItem.getId()!)
             ),
           ]),
     }),
