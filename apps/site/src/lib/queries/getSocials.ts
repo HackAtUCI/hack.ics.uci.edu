@@ -6,6 +6,7 @@ import { Icon } from "@/lib/sanity/types";
 export const Socials = z
   .array(
     z.object({
+      _key: z.string(),
       icon: Icon,
       platform: z.string(),
       label: z.string().optional(),
