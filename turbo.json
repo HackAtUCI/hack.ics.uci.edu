@@ -14,12 +14,15 @@
       ]
     },
     "lint": {},
+    "format:write": {
+      "cache": false
+    },
+    "format:check": {
+      "cache": false
+    },
     "dev": {
       "cache": false,
       "persistent": true
-    },
-    "format": {
-      "cache": false
     }
   }
 }

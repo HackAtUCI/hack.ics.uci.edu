@@ -5,7 +5,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "turbo run format"
+    "format:write": "turbo run format:write",
+    "format:check": "turbo run format:check"
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
