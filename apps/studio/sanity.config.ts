@@ -1,40 +1,42 @@
-import {defineConfig} from 'sanity'
-import {theme} from 'https://themer.sanity.build/api/hues?primary=1c3385;800'
-import {deskTool} from 'sanity/desk'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
-import {CogIcon, EarthAmericasIcon} from '@sanity/icons'
+import { defineConfig } from "sanity";
+import { theme } from "https://themer.sanity.build/api/hues?primary=1c3385;800";
+import { deskTool } from "sanity/desk";
+import { visionTool } from "@sanity/vision";
+import { schemaTypes } from "./schemas";
+import { CogIcon, EarthAmericasIcon } from "@sanity/icons";
 
 export default defineConfig({
-  name: 'default',
-  title: 'hack.ics.uci.edu',
+  name: "default",
+  title: "hack.ics.uci.edu",
   theme,
 
-  projectId: 'ue554f0d',
-  dataset: 'production',
+  projectId: "ue554f0d",
+  dataset: "production",
 
   plugins: [
     deskTool({
       structure: (S) =>
         S.list()
-          .title('Content')
+          .title("Content")
           .items([
             S.listItem()
-              .title('Site Settings')
+              .title("Site Settings")
               .icon(CogIcon)
               .child(
                 S.list()
-                  .title('Site Settings')
+                  .title("Site Settings")
                   .items([
                     S.listItem()
-                      .title('Socials')
+                      .title("Socials")
                       .icon(EarthAmericasIcon)
-                      .child(S.document().schemaType('socials').documentId('socials')),
+                      .child(
+                        S.document().schemaType("socials").documentId("socials")
+                      ),
                   ])
               ),
             S.divider(),
             ...S.documentTypeListItems().filter(
-              (listItem) => !['socials'].includes(listItem.getId()!)
+              (listItem) => !["socials"].includes(listItem.getId()!)
             ),
           ]),
     }),
@@ -44,4 +46,4 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
-})
+});
