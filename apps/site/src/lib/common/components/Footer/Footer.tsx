@@ -20,8 +20,8 @@ const Footer = async ({ style }: FooterProps) => {
       <a href="/">
         <img src={HackIcon.src} alt="Home" />
       </a>
-      {socials.map(({ icon, link }) => (
-        <a href={link}>
+      {socials.map(({ _key, icon, link }) => (
+        <a key={_key} href={link}>
           <Icon icon={icon} size="100%" color="#fff" />
         </a>
       ))}
