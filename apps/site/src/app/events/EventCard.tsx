@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SanityImageReference } from "@/lib/sanity/types";
+import { Cover } from "./getEvents";
 import { client } from "@/lib/sanity/sanityClient";
 import imageUrlBuilder from "@sanity/image-url";
 
@@ -8,7 +8,7 @@ const urlBuilder = imageUrlBuilder(client);
 import styles from "./EventCard.module.scss";
 
 interface EventCard {
-  image: z.infer<typeof SanityImageReference>;
+  image: z.infer<typeof Cover>;
   title: string;
   startTime: string;
   endTime?: string;
@@ -24,7 +24,7 @@ const EventCard = ({ image, title, startTime, endTime }: EventCard) => {
       <img
         className={styles.coverImage}
         src={urlBuilder.image(image).url()}
-        alt="event"
+        alt={image.alt}
       />
       <div className={styles.details}>
         <time

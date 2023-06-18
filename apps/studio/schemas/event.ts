@@ -19,6 +19,16 @@ export default defineType({
       description:
         "Should be at least 1200 x 630, with an aspect ratio of 1.9:1.",
       type: "image",
+      fields: [
+        {
+          name: "alt",
+          title: "Alternative Text",
+          description:
+            'Describe what\'s in the image, rather than it\'s purpose. For example, instead of writing, "A poster for ICS fair", write "an open red and white carnival tent that contains details about ICS fair inside".',
+          type: "string",
+          validation: (Rule) => Rule.required(),
+        },
+      ],
       validation: (Rule) => Rule.required(),
     }),
     defineField({

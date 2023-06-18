@@ -5,11 +5,15 @@ import { cache } from "react";
 import { client } from "@/lib/sanity/sanityClient";
 import { SanityDocument, SanityImageReference } from "@/lib/sanity/types";
 
-export const Events = z.array(
+export const Cover = SanityImageReference.extend({
+  alt: z.string(),
+});
+
+const Events = z.array(
   SanityDocument.extend({
     _type: z.literal("event"),
     title: z.string(),
-    cover: SanityImageReference,
+    cover: Cover,
     timeRange: z.object({
       timezone: z.string(),
       start: z.string().datetime(),
