@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Preview
 
 on:
   pull_request:
@@ -15,6 +15,7 @@ jobs:
       - uses: amondnet/vercel-action@v25
         with:
           vercel-version: 30.2.2
+          github-comment: "Deployment Preview for Hack at UCI **Site**."
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ vars.VERCEL_ORG_ID}}
@@ -26,6 +27,7 @@ jobs:
       - uses: amondnet/vercel-action@v25
         with:
           vercel-version: 30.2.2
+          github-comment: "Deployment Preview for **Sanity Studio**."
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ vars.VERCEL_ORG_ID}}
