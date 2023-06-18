@@ -1,7 +1,14 @@
+import { z } from "zod";
+import { Cover } from "./getEvents";
+import { client } from "@/lib/sanity/sanityClient";
+import imageUrlBuilder from "@sanity/image-url";
+
+const urlBuilder = imageUrlBuilder(client);
+
 import styles from "./EventCard.module.scss";
 
 interface EventCard {
-  image: string;
+  image: z.infer<typeof Cover>;
   title: string;
   startTime: string;
   endTime?: string;
@@ -14,7 +21,11 @@ const EventCard = ({ image, title, startTime, endTime }: EventCard) => {
 
   return (
     <article className={styles.eventCard}>
-      <img className={styles.coverImage} src={image} alt="event" />
+      <img
+        className={styles.coverImage}
+        src={urlBuilder.image(image).url()}
+        alt={image.alt}
+      />
       <div className={styles.details}>
         <time
           dateTime={new Date(startTime).toISOString()}
