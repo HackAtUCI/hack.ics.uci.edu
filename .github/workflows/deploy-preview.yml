@@ -15,7 +15,21 @@ jobs:
       - uses: amondnet/vercel-action@v25
         with:
           vercel-version: 30.2.2
-          github-comment: "Deployment Preview for Hack at UCI **Site**."
+          github-comment: |
+            <table>
+              <tr>
+                <td><strong>Name</strong></td>
+                <td>Hack at UCI Site</td>
+              </tr>
+              <tr>
+                <td><strong>Preview</strong></td>
+                <td><a href='{{deploymentUrl}}'>Visit Preview</a></td>
+              </tr>
+              <tr>
+                <td><strong>Commit</strong></td>
+                <td>{{deploymentCommit}}</td>
+              </tr>
+            </table>
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ vars.VERCEL_ORG_ID}}
@@ -27,7 +41,21 @@ jobs:
       - uses: amondnet/vercel-action@v25
         with:
           vercel-version: 30.2.2
-          github-comment: "Deployment Preview for **Sanity Studio**."
+          github-comment: |
+            <table>
+              <tr>
+                <td><strong>Name</strong></td>
+                <td>Sanity Studio</td>
+              </tr>
+              <tr>
+                <td><strong>Preview</strong></td>
+                <td><a href='{{deploymentUrl}}'>Visit Preview</a></td>
+              </tr>
+              <tr>
+                <td><strong>Commit</strong></td>
+                <td>{{deploymentCommit}}</td>
+              </tr>
+            </table>
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ vars.VERCEL_ORG_ID}}
