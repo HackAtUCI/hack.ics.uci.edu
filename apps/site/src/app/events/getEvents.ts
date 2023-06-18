@@ -1,9 +1,6 @@
 import "server-only";
 
 const GRAPH_URL = "https://graph.facebook.com/v15.0/me";
-const TOKEN = process.env.FB_PAGE_TOKEN;
-
-if (!TOKEN) throw new Error("FB_PAGE_TOKEN env variable is missing.");
 
 type Event = {
   cover: {
