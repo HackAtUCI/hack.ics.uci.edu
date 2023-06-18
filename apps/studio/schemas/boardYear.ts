@@ -11,11 +11,13 @@ const organizerSearch = [
         to: {
           type: "organizer",
         },
+        validation: (Rule) => Rule.required(),
       },
       {
         name: "position",
         type: "string",
         title: "Position",
+        validation: (Rule) => Rule.required(),
       },
     ],
     preview: {
@@ -44,12 +46,14 @@ export default {
       name: "year",
       type: "number",
       title: "Academic Year",
+      validation: (Rule) => Rule.required(),
     },
     ...Array.from(nameTitleAssoc.entries()).map((l) => ({
       name: l[0],
       type: "array",
       title: l[1],
       of: organizerSearch,
+      validation: (Rule) => Rule.required(),
     })),
   ],
   initialValue: {
