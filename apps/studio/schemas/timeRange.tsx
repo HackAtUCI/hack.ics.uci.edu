@@ -1,12 +1,13 @@
 import type { DateTimeInputProps } from "sanity";
 import { defineField, defineType, set, unset } from "sanity";
+import { TextInput } from "@sanity/ui";
 import ct from "countries-and-timezones";
 
 const timezones = ct.getAllTimezones();
 
 const CustomDateTimeInput = ({ onChange, value }: DateTimeInputProps) => {
   return (
-    <input
+    <TextInput
       type="datetime-local"
       onChange={(event) => {
         console.log(
@@ -26,20 +27,6 @@ const CustomDateTimeInput = ({ onChange, value }: DateTimeInputProps) => {
       // Ensure pattern matches on browers that don't support `datetime-local`.
       pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
       value={value ? new Date(value).toISOString().slice(0, 16) : undefined}
-      style={{
-        borderRadius: "0.0625rem",
-        border: 0,
-        width: "100%",
-        boxSizing: "border-box",
-        outline: "none",
-        margin: 0,
-        backgroundColor: "#fff",
-        color: "#101112",
-        boxShadow: "inset 0 0 0 1px #ced2d9",
-        fontSize: "1rem",
-        lineHeight: "1.3125rem",
-        padding: "0.4375rem 0.75rem",
-      }}
     />
   );
 };
