@@ -4,12 +4,13 @@ on:
   pull_request:
 
 jobs:
-  deploy:
+  Site:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: amondnet/vercel-action@v25
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ vars.VERCEL_ORG_ID}}
           vercel-project-id: ${{ vars.VERCEL_PROJECT_ID_SITE}}
