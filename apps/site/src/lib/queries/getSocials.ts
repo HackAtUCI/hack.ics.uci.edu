@@ -3,8 +3,6 @@ import { cache } from "react";
 import { client } from "@/lib/sanity/sanityClient";
 import { Icon } from "@/lib/sanity/types";
 
-throw new Error();
-
 export const Socials = z
   .array(
     z.object({
