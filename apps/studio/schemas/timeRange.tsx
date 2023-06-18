@@ -52,8 +52,7 @@ export default defineType({
     }),
     // The default behavior for datetime fields is to display / set the datetime based on the user's local timezone and store in UTC. For example if I'm in NY and select 9AM it'll be stored as 13:00 (assuming we're not in daylight savings), but still displayed as 9AM. This is neither configurable nor transparent to the user.
     // I was unable to find a way to set the timezone of the datetime field, or disable the timezone conversion.
-    // Since there's no way to set the timezone, we need to be able to select the datetime as it's stored, hence the custom component. I've opted to use a native input field.
-    // I'm honestly quite shocked they have no way to take timezones into account.
+    // Since there's no way to set the timezone, we need to be able to select the datetime as it's stored, hence the custom component.
     defineField({
       name: "start",
       title: "Start",
