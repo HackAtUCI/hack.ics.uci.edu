@@ -5,9 +5,10 @@ import styles from "./PastEvents.module.scss";
 
 const PastEvents = async () => {
   const events = await getEventsDescending();
+
   const now = new Date();
-  const pastEvents = events.filter(({ start_time, end_time }) =>
-    end_time ? new Date(end_time) < now : new Date(start_time) < now
+  const pastEvents = events.filter(({ timeRange: { start, end } }) =>
+    end ? new Date(end) < now : new Date(start) < now
   );
 
   if (pastEvents.length === 0)
@@ -17,11 +18,12 @@ const PastEvents = async () => {
     <div className={styles.events}>
       {pastEvents.map((event) => (
         <EventCard
-          title={event.name}
-          startTime={event.start_time}
-          endTime={event.end_time}
-          image={event.cover.source}
-          key={event.id}
+          key={event._id}
+          title={event.title}
+          startTime={event.timeRange.start}
+          endTime={event.timeRange.end}
+          // description={event.description}
+          image={event.cover}
         />
       ))}
     </div>

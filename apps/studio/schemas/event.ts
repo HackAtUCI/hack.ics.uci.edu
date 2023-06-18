@@ -1,11 +1,8 @@
 import { defineField, defineType } from "sanity";
 import { CalendarIcon } from "@sanity/icons";
-import ct from "countries-and-timezones";
-
-const timezones = ct.getAllTimezones();
 
 export default defineType({
-  name: "events",
+  name: "event",
   title: "Events",
   icon: CalendarIcon,
   type: "document",
@@ -22,45 +19,13 @@ export default defineType({
       description:
         "Should be at least 1200 x 630, with an aspect ratio of 1.9:1.",
       type: "image",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "timeRange",
       title: "Time Range",
-      type: "object",
-      fields: [
-        defineField({
-          name: "timezone",
-          title: "Timezone",
-          type: "string",
-          initialValue: "America/Los_Angeles",
-          options: {
-            list: Object.entries(timezones).map(([key, timezone]) => ({
-              title: `${timezone.name} (${timezone.utcOffsetStr})`,
-              value: key,
-            })),
-          },
-          validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-          name: "start",
-          title: "Start",
-          type: "datetime",
-          options: {
-            dateFormat: "ddd, MMM Do YYYY",
-            timeFormat: "h:mm A",
-          },
-          validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-          name: "end",
-          title: "End",
-          type: "datetime",
-          options: {
-            dateFormat: "ddd, MMM Do YYYY",
-            timeFormat: "h:mm A",
-          },
-        }),
-      ],
+      type: "timeRange",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "description",
@@ -78,15 +43,22 @@ export default defineType({
       title: "Location",
       type: "string",
     }),
+    defineField({
+      name: "rsvp",
+      title: "RSVP",
+      type: "url",
+    }),
   ],
   preview: {
     select: {
       title: "title",
+      media: "cover",
       start: "timeRange.start",
       end: "timeRange.end",
     },
-    prepare({ title, start, end }) {
+    prepare({ title, media, start, end }) {
       const dateTimeFormat = new Intl.DateTimeFormat("en", {
+        timeZone: "UTC",
         dateStyle: "medium",
         timeStyle: "short",
       });
@@ -97,8 +69,16 @@ export default defineType({
 
       return {
         title,
+        media,
         subtitle: time,
       };
     },
   },
+  orderings: [
+    {
+      title: "Start Time, Desc",
+      name: "startTimeDesc",
+      by: [{ field: "timeRange.start", direction: "desc" }],
+    },
+  ],
 });
