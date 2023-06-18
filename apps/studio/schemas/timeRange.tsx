@@ -10,14 +10,18 @@ const CustomDateTimeInput = ({ onChange, value }: DateTimeInputProps) => {
     <TextInput
       type="datetime-local"
       onChange={(event) => {
-        // This is probably pretty fragile, but seems to work well enough?
-        // Basically appending "+00:00" to instruct the Date contructor to interpret our string as UTC.
-        // The other option would be parsing the string and using Date.UTC().
-        // idk time zones are hard :/
+        const value = event.currentTarget.value;
+
+        // YYYY-MM-DDThh:mm -> [YYYY, MM, DD, hh, mm]
+        const [year, month, day, hour, minute] = value
+          .split(/[-T:]/)
+          .map((string) => parseInt(string));
 
         onChange(
-          event.currentTarget.value
-            ? set(new Date(event.currentTarget.value + "+00:00").toISOString())
+          value
+            ? set(
+                new Date(Date.UTC(year, month, day, hour, minute)).toISOString()
+              )
             : unset()
         );
       }}
