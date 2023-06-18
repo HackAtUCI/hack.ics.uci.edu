@@ -2,7 +2,7 @@ import { HeartIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "organiers",
+  name: "organizer",
   icon: HeartIcon,
   title: "Organizers",
   type: "document",
@@ -14,10 +14,9 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "position",
-      title: "Position",
+      name: "pronouns",
+      title: "Pronouns",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "linkedinURL",
