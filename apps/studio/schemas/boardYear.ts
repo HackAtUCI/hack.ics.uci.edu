@@ -1,33 +1,34 @@
+import { defineField, defineType, defineArrayMember } from "sanity";
 import { HeartIcon } from "@sanity/icons";
 
-const organizerSearch = [
-  {
+const personSearch = [
+  defineArrayMember({
     type: "object",
     fields: [
-      {
-        name: "organizer",
+      defineField({
+        name: "person",
         type: "reference",
-        title: "Organizer",
+        title: "Person",
         to: {
-          type: "organizer",
+          type: "person",
         },
         validation: (Rule) => Rule.required(),
-      },
-      {
+      }),
+      defineField({
         name: "position",
         type: "string",
         title: "Position",
         validation: (Rule) => Rule.required(),
-      },
+      }),
     ],
     preview: {
       select: {
-        title: "organizer.name",
+        title: "person.name",
         subtitle: "position",
       },
     },
     icon: HeartIcon,
-  },
+  }),
 ];
 
 const nameTitleAssoc: Map<string, string> = new Map([
@@ -37,24 +38,26 @@ const nameTitleAssoc: Map<string, string> = new Map([
   ["tech", "Tech Organizers"],
 ]);
 
-export default {
-  name: "boardYears",
+export default defineType({
+  name: "boardYear",
   type: "document",
   title: "Board Years",
   fields: [
-    {
+    defineField({
       name: "year",
       type: "number",
       title: "Academic Year",
       validation: (Rule) => Rule.required(),
-    },
-    ...Array.from(nameTitleAssoc.entries()).map((l) => ({
-      name: l[0],
-      type: "array",
-      title: l[1],
-      of: organizerSearch,
-      validation: (Rule) => Rule.required(),
-    })),
+    }),
+    ...Object.entries(nameTitleAssoc).map(([key, title]) =>
+      defineField({
+        name: key,
+        type: "array",
+        title: title,
+        of: personSearch,
+        validation: (Rule) => Rule.required(),
+      })
+    ),
   ],
   initialValue: {
     year: new Date().getFullYear(),
@@ -64,4 +67,4 @@ export default {
       title: "year",
     },
   },
-};
+});

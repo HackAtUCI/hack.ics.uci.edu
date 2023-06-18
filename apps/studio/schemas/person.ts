@@ -2,9 +2,9 @@ import { HeartIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "organizer",
+  name: "person",
   icon: HeartIcon,
-  title: "Organizers",
+  title: "People",
   type: "document",
   fields: [
     defineField({
@@ -22,7 +22,6 @@ export default defineType({
       name: "linkedinURL",
       title: "LinkedIn URL",
       type: "url",
-      validation: (Rule) => Rule.required().uri({ scheme: ["http", "https"] }),
     }),
     defineField({
       name: "profilePic",
@@ -31,4 +30,10 @@ export default defineType({
       type: "image",
     }),
   ],
+  preview: {
+    select: {
+      title: "name",
+      media: "profilePic",
+    },
+  },
 });

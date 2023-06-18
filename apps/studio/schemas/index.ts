@@ -1,7 +1,7 @@
 import icon from "./icon";
 import socials from "./socials";
 import events from "./events";
-import organizer from "./organizer";
+import person from "./person";
 import boardYear from "./boardYear";
 
-export const schemaTypes = [icon, socials, events, organizer, boardYear];
+export const schemaTypes = [icon, socials, events, person, boardYear];
