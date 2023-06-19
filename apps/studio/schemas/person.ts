@@ -1,9 +1,9 @@
-import { HeartIcon } from "@sanity/icons";
+import { UserIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export default defineType({
   name: "person",
-  icon: HeartIcon,
+  icon: UserIcon,
   title: "People",
   type: "document",
   fields: [
@@ -28,6 +28,9 @@ export default defineType({
       title: "Profile Picture",
       description: "Images should preferably have a 1:1 aspect ratio.",
       type: "image",
+      options: {
+        hotspot: true,
+      },
     }),
   ],
   preview: {

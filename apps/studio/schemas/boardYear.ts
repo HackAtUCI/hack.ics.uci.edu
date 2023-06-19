@@ -1,45 +1,44 @@
+import { UsersIcon } from "@sanity/icons";
 import { defineField, defineType, defineArrayMember } from "sanity";
-import { HeartIcon } from "@sanity/icons";
 
-const personSearch = [
-  defineArrayMember({
-    type: "object",
-    fields: [
-      defineField({
-        name: "person",
-        type: "reference",
-        title: "Person",
-        to: {
-          type: "person",
-        },
-        validation: (Rule) => Rule.required(),
-      }),
-      defineField({
-        name: "position",
-        type: "string",
-        title: "Position",
-        validation: (Rule) => Rule.required(),
-      }),
-    ],
-    preview: {
-      select: {
-        title: "person.name",
-        subtitle: "position",
+const personSearch = {
+  type: "object",
+  fields: [
+    defineField({
+      name: "person",
+      type: "reference",
+      title: "Person",
+      to: {
+        type: "person",
       },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "position",
+      type: "string",
+      title: "Position",
+      validation: (Rule) => Rule.required(),
+    }),
+  ],
+  preview: {
+    select: {
+      title: "person.name",
+      subtitle: "position",
+      media: "person.profilePic",
     },
-    icon: HeartIcon,
-  }),
-];
+  },
+};
 
-const nameTitleAssoc: Map<string, string> = new Map([
-  ["corporate", "Corporate Organizers"],
-  ["logistics", "Logistics Organizers"],
-  ["marketing", "Marketing Organizers"],
-  ["tech", "Tech Organizers"],
-]);
+const nameTitleAssoc: { [dept: string]: string } = {
+  corporate: "Corporate Organizers",
+  logistics: "Logistics Organizers",
+  marketing: "Marketing Organizers",
+  tech: "Tech Organizers",
+};
 
 export default defineType({
   name: "boardYear",
+  icon: UsersIcon,
   type: "document",
   title: "Board Years",
   fields: [
@@ -54,7 +53,7 @@ export default defineType({
         name: key,
         type: "array",
         title: title,
-        of: personSearch,
+        of: [defineArrayMember(personSearch)],
         validation: (Rule) => Rule.required(),
       })
     ),
@@ -65,6 +64,9 @@ export default defineType({
   preview: {
     select: {
       title: "year",
+    },
+    prepare({ title }) {
+      return { title: `${title} - ${title + 1}` };
     },
   },
 });
