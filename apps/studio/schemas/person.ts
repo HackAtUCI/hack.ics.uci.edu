@@ -1,4 +1,5 @@
-import { UserIcon } from "@sanity/icons";
+import { UserIcon, EarthGlobeIcon } from "@sanity/icons";
+import { SiLinkedin } from "@icons-pack/react-simple-icons";
 import { defineField, defineType } from "sanity";
 
 export default defineType({
@@ -19,9 +20,74 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "linkedinURL",
-      title: "LinkedIn URL",
-      type: "url",
+      name: "email",
+      title: "Email",
+      type: "email",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "socials",
+      title: "Socials",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "platform",
+              title: "Platform",
+              type: "string",
+              options: {
+                list: ["LinkedIn", "Personal Website"],
+              },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "label",
+              title: "Label",
+              description:
+                "Primary identifier of platform (i.e. Username). Include a prefix character (@, ~, etc.) if used by brand.",
+              type: "string",
+            }),
+            defineField({
+              name: "link",
+              title: "Link",
+              type: "url",
+              validation: (Rule) =>
+                Rule.required().uri({ scheme: ["http", "https", "mailto"] }),
+            }),
+          ],
+          preview: {
+            select: {
+              title: "platform",
+              platform: "platform",
+              subtitle: "label",
+              link: "link",
+            },
+            prepare({ title, platform, subtitle, link }) {
+              let icon;
+              switch (platform.toLowerCase()) {
+                case "linkedin":
+                  icon = SiLinkedin;
+                  break;
+                case "personal website":
+                  icon = UserIcon;
+                  break;
+                default:
+                  icon = EarthGlobeIcon;
+                  break;
+              }
+              return {
+                title,
+                icon,
+                subtitle: subtitle ? subtitle : link,
+                link,
+              };
+            },
+          },
+        },
+      ],
+      validation: (Rule) => Rule.unique(),
     }),
     defineField({
       name: "profilePic",
@@ -36,6 +102,7 @@ export default defineType({
   preview: {
     select: {
       title: "name",
+      subtitle: "email",
       media: "profilePic",
     },
   },
