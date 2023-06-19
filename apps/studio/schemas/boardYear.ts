@@ -1,7 +1,8 @@
 import { UsersIcon } from "@sanity/icons";
 import { defineField, defineType, defineArrayMember } from "sanity";
 
-const personSearch = {
+const personSearch = defineType({
+  name: "personSearch",
   type: "object",
   fields: [
     defineField({
@@ -27,7 +28,7 @@ const personSearch = {
       media: "person.profilePic",
     },
   },
-};
+});
 
 const nameTitleAssoc: { [dept: string]: string } = {
   corporate: "Corporate Organizers",
