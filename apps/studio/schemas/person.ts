@@ -1,6 +1,12 @@
-import { UserIcon, EarthGlobeIcon } from "@sanity/icons";
+import { UserIcon, EarthGlobeIcon, LinkIcon } from "@sanity/icons";
 import { SiLinkedin } from "@icons-pack/react-simple-icons";
 import { defineField, defineType } from "sanity";
+
+enum Socials {
+  LinkedIn = "LinkedIn",
+  PersonalWebsite = "Personal Website",
+  Other = "Other Platform",
+}
 
 export default defineType({
   name: "person",
@@ -38,7 +44,10 @@ export default defineType({
               title: "Platform",
               type: "string",
               options: {
-                list: ["LinkedIn", "Personal Website"],
+                list: [
+                  { title: Socials.LinkedIn, value: "linkedin" },
+                  { title: Socials.PersonalWebsite, value: "site" },
+                ],
               },
               validation: (Rule) => Rule.required(),
             }),
@@ -53,35 +62,35 @@ export default defineType({
               name: "link",
               title: "Link",
               type: "url",
-              validation: (Rule) =>
-                Rule.required().uri({ scheme: ["http", "https", "mailto"] }),
+              validation: (Rule) => Rule.required(),
             }),
           ],
           preview: {
             select: {
-              title: "platform",
               platform: "platform",
-              subtitle: "label",
+              label: "label",
               link: "link",
             },
-            prepare({ title, platform, subtitle, link }) {
-              let icon;
-              switch (platform.toLowerCase()) {
+            prepare({ platform, label, link }) {
+              let icon, title;
+              switch (platform) {
                 case "linkedin":
+                  title = Socials.LinkedIn;
                   icon = SiLinkedin;
                   break;
-                case "personal website":
-                  icon = UserIcon;
+                case "site":
+                  title = Socials.PersonalWebsite;
+                  icon = LinkIcon;
                   break;
                 default:
+                  title = Socials.Other;
                   icon = EarthGlobeIcon;
                   break;
               }
               return {
                 title,
                 icon,
-                subtitle: subtitle ? subtitle : link,
-                link,
+                subtitle: label ?? link,
               };
             },
           },
