@@ -6,9 +6,10 @@ import styles from "./UpcomingEvents.module.scss";
 
 const UpcomingEvents = async () => {
   const events = await getEventsDescending();
+
   const now = new Date();
-  const upcomingEvents = events.filter(({ start_time, end_time }) =>
-    end_time ? new Date(end_time) > now : new Date(start_time) > now
+  const upcomingEvents = events.filter(({ timeRange: { start, end } }) =>
+    end ? new Date(end) > now : new Date(start) > now
   );
 
   if (upcomingEvents.length === 0)
@@ -28,12 +29,12 @@ const UpcomingEvents = async () => {
       <div className={styles.events}>
         {upcomingEvents.reverse().map((event) => (
           <EventCard
-            title={event.name}
-            startTime={event.start_time}
-            endTime={event.end_time}
+            key={event._id}
+            title={event.title}
+            startTime={event.timeRange.start}
+            endTime={event.timeRange.end}
             // description={event.description}
-            image={event.cover.source}
-            key={event.id}
+            image={event.cover}
           />
         ))}
       </div>
