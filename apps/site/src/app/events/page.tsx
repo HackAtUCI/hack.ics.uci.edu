@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import type { Metadata } from "next";
 import clsx from "clsx";
 import Header from "@/lib/common/components/Header";
