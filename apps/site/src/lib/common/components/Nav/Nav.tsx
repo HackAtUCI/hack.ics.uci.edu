@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import clsx from "clsx";
 import Link from "next/link";
-import Image from 'next/image'
+import Image from "next/image";
 
 import styles from "./Nav.module.scss";
 
@@ -30,7 +30,6 @@ const ListItem = forwardRef<ElementRef<"a">, ComponentPropsWithoutRef<"a">>(
 ListItem.displayName = NavigationMenu.Link.displayName;
 
 function AppNavbar() {
-
   return (
     <header className={styles.header}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
