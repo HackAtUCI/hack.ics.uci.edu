@@ -32,15 +32,8 @@ ListItem.displayName = NavigationMenu.Link.displayName;
 function AppNavbar() {
   return (
     <header className={styles.header}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <Link href="/">
-        <Image
-          className={styles.logo}
-          src={Logo.src}
-          width={50}
-          height={50}
-          alt="hack logo"
-        />
+        <Image src={Logo.src} width={50} height={50} alt="hack logo" />
       </Link>
       <NavigationMenu.Root className={styles.root}>
         <NavigationMenu.List className={styles.list}>
