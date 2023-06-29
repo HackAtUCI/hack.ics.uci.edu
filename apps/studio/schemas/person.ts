@@ -1,6 +1,6 @@
 import { UserIcon, EarthGlobeIcon, LinkIcon } from "@sanity/icons";
 import { SiLinkedin } from "@icons-pack/react-simple-icons";
-import { defineField, defineType } from "sanity";
+import { defineField, defineType, defineArrayMember } from "sanity";
 
 enum Socials {
   LinkedIn = "LinkedIn",
@@ -36,7 +36,7 @@ export default defineType({
       title: "Socials",
       type: "array",
       of: [
-        {
+        defineArrayMember({
           type: "object",
           fields: [
             defineField({
@@ -94,7 +94,7 @@ export default defineType({
               };
             },
           },
-        },
+        }),
       ],
       validation: (Rule) => Rule.unique(),
     }),

@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineField, defineType, defineArrayMember } from "sanity";
 import { previewIcon } from "./icon";
 
 export default defineType({
@@ -11,7 +11,7 @@ export default defineType({
       title: "Socials",
       type: "array",
       of: [
-        {
+        defineArrayMember({
           type: "object",
           fields: [
             defineField({
@@ -55,7 +55,7 @@ export default defineType({
               };
             },
           },
-        },
+        }),
       ],
       validation: (Rule) => Rule.unique(),
     }),
