@@ -8,36 +8,36 @@ const urlBuilder = imageUrlBuilder(client);
 import styles from "./EventCard.module.scss";
 
 interface EventCard {
-  image: z.infer<typeof Cover>;
-  title: string;
-  startTime: string;
-  endTime?: string;
+	image: z.infer<typeof Cover>;
+	title: string;
+	startTime: string;
+	endTime?: string;
 }
 const EventCard = ({ image, title, startTime, endTime }: EventCard) => {
-  const dateTimeFormat = new Intl.DateTimeFormat("en", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
+	const dateTimeFormat = new Intl.DateTimeFormat("en", {
+		dateStyle: "medium",
+		timeStyle: "short",
+	});
 
-  return (
-    <article className={styles.eventCard}>
-      <img
-        className={styles.coverImage}
-        src={urlBuilder.image(image).url()}
-        alt={image.alt}
-      />
-      <div className={styles.details}>
-        <time
-          dateTime={new Date(startTime).toISOString()}
-          className={styles.time}
-        >
-          {endTime
-            ? dateTimeFormat.formatRange(new Date(startTime), new Date(endTime))
-            : dateTimeFormat.format(new Date(startTime))}
-        </time>
-        <h1 className={styles.title}>{title}</h1>
-      </div>
-      {/* <div className="modal-top-part">
+	return (
+		<article className={styles.eventCard}>
+			<img
+				className={styles.coverImage}
+				src={urlBuilder.image(image).url()}
+				alt={image.alt}
+			/>
+			<div className={styles.details}>
+				<time
+					dateTime={new Date(startTime).toISOString()}
+					className={styles.time}
+				>
+					{endTime
+						? dateTimeFormat.formatRange(new Date(startTime), new Date(endTime))
+						: dateTimeFormat.format(new Date(startTime))}
+				</time>
+				<h1 className={styles.title}>{title}</h1>
+			</div>
+			{/* <div className="modal-top-part">
           <div className="header-line-event-card">
             <span className="popup-title-event-card">{props.title}</span>
           </div>
@@ -71,8 +71,8 @@ const EventCard = ({ image, title, startTime, endTime }: EventCard) => {
             Close
           </button>
         </div> */}
-    </article>
-  );
+		</article>
+	);
 };
 
 export default EventCard;

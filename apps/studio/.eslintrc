@@ -1,6 +1,6 @@
 {
-  "extends": [
-    "@sanity/eslint-config-studio",
-    "plugin:sanity-studio/recommended"
-  ]
+	"extends": [
+		"@sanity/eslint-config-studio",
+		"plugin:sanity-studio/recommended"
+	]
 }

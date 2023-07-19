@@ -1,21 +1,21 @@
 @use "~@/lib/common/styles/hack-variables.scss" as variables;
 
 .teamTitle {
-  margin-top: 20px;
-  text-align: center;
-  font-style: normal;
-  font-size: 48px;
-  font-weight: bold;
-  margin-bottom: 24px;
-  color: rgba(43, 43, 43, 1);
+	margin-top: 20px;
+	text-align: center;
+	font-style: normal;
+	font-size: 48px;
+	font-weight: bold;
+	margin-bottom: 24px;
+	color: rgba(43, 43, 43, 1);
 }
 
 .teamGrid {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
-  @media screen and (max-width: 760px) {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  }
+	@media screen and (max-width: 760px) {
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	}
 }
