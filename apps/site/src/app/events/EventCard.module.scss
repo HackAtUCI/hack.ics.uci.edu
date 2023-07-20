@@ -1,27 +1,27 @@
 @use "~@/lib/common/styles/hack-variables.scss" as variables;
 
 .eventCard {
-  background-color: #f3f3f3;
+	background-color: #f3f3f3;
 }
 
 .coverImage {
-  width: 480px;
-  height: 270px;
-  object-fit: cover;
+	width: 480px;
+	height: 270px;
+	object-fit: cover;
 }
 
 .details {
-  padding: 12px;
-  text-align: left;
+	padding: 12px;
+	text-align: left;
 
-  .title {
-    margin: 0.75rem 0;
-    font-weight: 600;
-    font-size: 1.5rem;
-  }
+	.title {
+		margin: 0.75rem 0;
+		font-weight: 600;
+		font-size: 1.5rem;
+	}
 
-  .time {
-    font-weight: normal;
-    font-size: 1rem;
-  }
+	.time {
+		font-weight: normal;
+		font-size: 1rem;
+	}
 }

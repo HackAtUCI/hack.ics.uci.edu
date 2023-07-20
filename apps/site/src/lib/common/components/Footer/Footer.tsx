@@ -8,25 +8,25 @@ import styles from "./Footer.module.scss";
 import HackIcon from "../../assets/logo.svg";
 
 interface FooterProps {
-  style?: CSSProperties;
+	style?: CSSProperties;
 }
 const Footer = async ({ style }: FooterProps) => {
-  const socials = await getSocials();
+	const socials = await getSocials();
 
-  if (!socials) throw new Error();
+	if (!socials) throw new Error();
 
-  return (
-    <footer className={styles.footer} style={style}>
-      <a href="/">
-        <img src={HackIcon.src} alt="Home" />
-      </a>
-      {socials.map(({ _key, icon, link }) => (
-        <a key={_key} href={link}>
-          <Icon icon={icon} size="100%" color="#fff" />
-        </a>
-      ))}
-    </footer>
-  );
+	return (
+		<footer className={styles.footer} style={style}>
+			<a href="/">
+				<img src={HackIcon.src} alt="Home" />
+			</a>
+			{socials.map(({ _key, icon, link }) => (
+				<a key={_key} href={link}>
+					<Icon icon={icon} size="100%" color="#fff" />
+				</a>
+			))}
+		</footer>
+	);
 };
 
 export default Footer;

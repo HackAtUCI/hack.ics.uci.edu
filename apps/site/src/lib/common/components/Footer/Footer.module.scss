@@ -1,24 +1,24 @@
 @use "~@/lib/common/styles/hack-variables.scss" as variables;
 
 .footer {
-  width: 100%;
-  padding: 16px 0;
-  background: variables.$blue-gradient;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+	width: 100%;
+	padding: 16px 0;
+	background: variables.$blue-gradient;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 
-  a {
-    width: 25px;
+	a {
+		width: 25px;
 
-    img {
-      width: 100%;
-    }
-  }
+		img {
+			width: 100%;
+		}
+	}
 
-  @media screen and (min-width: 768px) {
-    a {
-      width: 36px;
-    }
-  }
+	@media screen and (min-width: 768px) {
+		a {
+			width: 36px;
+		}
+	}
 }
