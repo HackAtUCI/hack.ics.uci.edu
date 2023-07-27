@@ -19,8 +19,8 @@ import styles from "./TeamCard.module.scss";
 interface TeamCardProps {
 	name: string;
 	position: string;
-	image: string;
-	linkedInUrl: string;
+	image: string | undefined;
+	linkedInUrl: string | undefined;
 }
 const TeamCard = ({ name, position, image, linkedInUrl }: TeamCardProps) => {
 	return (
