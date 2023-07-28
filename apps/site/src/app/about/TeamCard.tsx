@@ -2,7 +2,7 @@
 import type { StaticImageData } from "next/image";
 import clsx from "clsx";
 // could we replace with something like simple-icons (https://github.com/simple-icons/simple-icons)?
-import linkedinLogo from "@/lib/common/assets/icons/linkedin.svg";
+import linkedinLogo from "@/lib/common/assets/linkedin-logo.png";
 import blank from "./blank.png";
 
 import styles from "./TeamCard.module.scss";
