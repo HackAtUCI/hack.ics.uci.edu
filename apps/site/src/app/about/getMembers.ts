@@ -1,14 +1,91 @@
+import { z } from "zod";
 import { cache } from "react";
 import { client } from "@/lib/sanity/sanityClient";
+import { SanityImageReference } from "@/lib/sanity/types";
+
+const Person = z.object({
+	_type: z.literal("person"),
+	name: z.string(),
+	profilePic: SanityImageReference.nullable(),
+	socials: z
+		.object({
+			link: z.string(),
+		})
+		.nullable(),
+});
+
+export const Members = z.object({
+	corporate: z.array(
+		z.object({
+			person: Person,
+			position: z.string(),
+		})
+	),
+	logistics: z.array(
+		z.object({
+			person: Person,
+			position: z.string(),
+		})
+	),
+	marketing: z.array(
+		z.object({
+			person: Person,
+			position: z.string(),
+		})
+	),
+	tech: z.array(
+		z.object({
+			person: Person,
+			position: z.string(),
+		})
+	),
+});
 
 export const getMembers = cache(async () => {
-	return await client
-		.fetch(
-			`*[_type == 'boardYear'][0]{corporate[]{person->{name, profilePic{asset->{url}}, socials[0]{link}}, position}, 
-                                  logistics[]{person->{name, profilePic{asset->{url}}, socials[0]{link}}, position}, 
-                                  marketing[]{person->{name, profilePic{asset->{url}}, socials[0]{link}}, position}, 
-                                  tech[]{person->{name, profilePic{asset->{url}}, socials[0]{link}}, position}}`
-		)
-		.then((result) => result)
-		.catch((error) => console.warn(error));
+	try {
+		return Members.parse(
+			await client.fetch(
+				`*[_type == 'boardYear'] | order(year desc) [0]{
+				corporate[]{
+					person->{
+						_type,
+						name,
+						profilePic,
+						socials[0] {link}
+					},
+					position
+				},
+				logistics[]{
+					person->{
+						_type,
+						name,
+						profilePic,
+						socials[0] {link}
+					},
+					position
+				},
+				marketing[]{
+					person->{
+						_type,
+						name,
+						profilePic,
+						socials[0] {link}
+					},
+					position
+				},
+				tech[]{
+					person->{
+						_type,
+						name,
+						profilePic,
+						socials[0] {link}
+					},
+					position
+				}, 
+			}`
+			)
+		);
+	} catch (error) {
+		console.error(error);
+	}
 });

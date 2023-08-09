@@ -1,13 +1,15 @@
 import clsx from "clsx";
 import TeamCard from "./TeamCard";
+import { z } from "zod";
+import { SanityImageReference } from "@/lib/sanity/types";
 
 import styles from "./TeamSection.module.scss";
 
 type Member = {
 	person: {
 		name: string;
-		profilePic?: { asset: { url: string } };
-		socials?: { link: string };
+		profilePic: z.infer<typeof SanityImageReference> | null;
+		socials: { link: string } | null;
 	};
 	position: string;
 };
@@ -26,7 +28,7 @@ const TeamSection = ({ team, members }: TeamSection) => {
 						key={member.person.name}
 						name={member.person.name}
 						position={member.position}
-						image={member.person.profilePic?.asset.url}
+						image={member.person.profilePic}
 						linkedInUrl={member.person.socials?.link}
 					/>
 				))}

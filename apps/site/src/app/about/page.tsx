@@ -47,8 +47,7 @@ export default async function Home() {
 						</p>
 					</div>
 					<div className={clsx(styles.aboutTeams, "container")}>
-						{Object.entries(teamMembers).map(([team, members]) => (
-							// @ts-expect-error
+						{Object.entries(teamMembers!).map(([team, members]) => (
 							<TeamSection key={team} team={team} members={members} />
 						))}
 					</div>
