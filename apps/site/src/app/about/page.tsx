@@ -20,6 +20,10 @@ export const metadata: Metadata = {
 export default async function Home() {
 	const teamMembers = await getMembers();
 
+	if (teamMembers === undefined) {
+		throw new Error("teamMembers is undefined");
+	}
+
 	return (
 		<div className={styles.about}>
 			<Header title="About Us" />
@@ -47,7 +51,7 @@ export default async function Home() {
 						</p>
 					</div>
 					<div className={clsx(styles.aboutTeams, "container")}>
-						{Object.entries(teamMembers!).map(([team, members]) => (
+						{Object.entries(teamMembers).map(([team, members]) => (
 							<TeamSection key={team} team={team} members={members} />
 						))}
 					</div>

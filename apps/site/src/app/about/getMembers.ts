@@ -14,31 +14,18 @@ const Person = z.object({
 		.nullable(),
 });
 
+const Department = z.array(
+	z.object({
+		person: Person,
+		position: z.string(),
+	})
+);
+
 export const Members = z.object({
-	corporate: z.array(
-		z.object({
-			person: Person,
-			position: z.string(),
-		})
-	),
-	logistics: z.array(
-		z.object({
-			person: Person,
-			position: z.string(),
-		})
-	),
-	marketing: z.array(
-		z.object({
-			person: Person,
-			position: z.string(),
-		})
-	),
-	tech: z.array(
-		z.object({
-			person: Person,
-			position: z.string(),
-		})
-	),
+	corporate: Department,
+	logistics: Department,
+	marketing: Department,
+	tech: Department,
 });
 
 export const getMembers = cache(async () => {

@@ -34,7 +34,11 @@ const TeamCard = ({ name, position, image, linkedInUrl }: TeamCardProps) => {
 		<div className={styles.teamCard}>
 			<div className={styles.imagesContainer}>
 				<img
-					src={image ? urlBuilder.image(image).url() : blank.src}
+					src={
+						image
+							? urlBuilder.image(image).size(200, 200).dpr(3).url()
+							: blank.src
+					}
 					className={styles.profilePicture}
 					alt={name}
 				/>
