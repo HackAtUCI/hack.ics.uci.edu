@@ -1,5 +1,9 @@
 @use "~@/lib/common/styles/hack-variables.scss" as variables;
 
+.radix-themes {
+	--default-font-family: var(--next-font-poppins), "sans-serif";
+}
+
 html {
 	scroll-behavior: smooth;
 }

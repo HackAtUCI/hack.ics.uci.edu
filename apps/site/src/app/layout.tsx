@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Nav from "@/lib/common/components/Nav";
 import Footer from "@/lib/common/components/Footer";
+import { Theme } from "@radix-ui/themes";
+
+import "@radix-ui/themes/styles.css";
 
 import "./globals.scss";
-
-const poppins = Poppins({
-	subsets: ["latin"],
-	weight: ["300", "400", "500", "600", "700"],
-});
+import FontProvider from "@/lib/common/FontProvider";
 
 const title = "Hack at UCI";
 const description =
@@ -29,12 +28,15 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={poppins.className}>
-				<Nav />
-				{children}
-				{/* https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#:~:text=Async%20Server%20Component%20TypeScript%20Error */}
-				{/* @ts-expect-error Async Server Component */}
-				<Footer />
+			<FontProvider />
+			<body>
+				<Theme>
+					<Nav />
+					{children}
+					{/* https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#:~:text=Async%20Server%20Component%20TypeScript%20Error */}
+					{/* @ts-expect-error Async Server Component */}
+					<Footer />
+				</Theme>
 			</body>
 		</html>
 	);
