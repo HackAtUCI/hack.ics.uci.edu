@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import Nav from "@/lib/common/components/Nav";
 import Footer from "@/lib/common/components/Footer";
-import { Theme } from "@radix-ui/themes";
-
-import "@radix-ui/themes/styles.css";
 
 import "./globals.scss";
 import FontProvider from "@/lib/common/FontProvider";
+import Accordion from "@/lib/theme/components/accordion";
 
 const title = "Hack at UCI";
 const description =
@@ -30,13 +27,31 @@ export default function RootLayout({
 		<html lang="en">
 			<FontProvider />
 			<body>
-				<Theme>
-					<Nav />
-					{children}
-					{/* https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#:~:text=Async%20Server%20Component%20TypeScript%20Error */}
-					{/* @ts-expect-error Async Server Component */}
-					<Footer />
-				</Theme>
+				<Accordion.Root
+					className="AccordionRoot"
+					type="single"
+					defaultValue="item-1"
+					collapsible
+				>
+					<Accordion.Item className="AccordionItem" value="item-1">
+						<Accordion.Trigger>Is it accessible?</Accordion.Trigger>
+						<Accordion.Content>
+							Yes. It adheres to the WAI-ARIA design pattern.
+						</Accordion.Content>
+					</Accordion.Item>
+					<Accordion.Item className="AccordionItem" value="item-2">
+						<Accordion.Trigger>Is it unstyled?</Accordion.Trigger>
+						<Accordion.Content>
+							Yes. It's unstyled by default, giving you freedom over the look
+							and feel.
+						</Accordion.Content>
+					</Accordion.Item>
+				</Accordion.Root>
+				<Nav />
+				{children}
+				{/* https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#:~:text=Async%20Server%20Component%20TypeScript%20Error */}
+				{/* @ts-expect-error Async Server Component */}
+				<Footer />
 			</body>
 		</html>
 	);

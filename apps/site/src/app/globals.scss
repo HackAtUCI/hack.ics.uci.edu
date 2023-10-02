@@ -1,11 +1,11 @@
 @use "~@/lib/common/styles/hack-variables.scss" as variables;
-
-.radix-themes {
-	--default-font-family: var(--next-font-poppins), "sans-serif";
-}
+@import "@radix-ui/colors/sand.css";
 
 html {
 	scroll-behavior: smooth;
+	font-family: var(--next-font-poppins), -apple-system, BlinkMacSystemFont,
+		avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu,
+		roboto, noto, arial, sans-serif;
 }
 
 body {
