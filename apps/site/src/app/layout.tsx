@@ -4,7 +4,7 @@ import Footer from "@/lib/common/components/Footer";
 
 import "./globals.scss";
 import FontProvider from "@/lib/common/FontProvider";
-import Accordion from "@/lib/theme/components/accordion";
+import Accordion from "@/lib/theme/components/Accordion";
 
 const title = "Hack at UCI";
 const description =

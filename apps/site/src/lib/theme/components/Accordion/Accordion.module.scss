@@ -1,0 +1,19 @@
+.accordion-trigger {
+	all: unset;
+	background-color: transparent;
+	padding: 0 20px;
+	height: 45px;
+	width: 100%;
+	font-size: 16px;
+	text-align: left;
+	color: var(--sand-12);
+
+	&.sand {
+		background: var(--sand-2);
+		border: 1px solid var(--sand-7);
+	}
+}
+
+.accordion-content {
+	background-color: var(--sand-2);
+}
