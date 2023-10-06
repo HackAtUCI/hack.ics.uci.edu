@@ -3,7 +3,7 @@
 import React from "react";
 import clsx from "clsx";
 import * as Accordion from "@radix-ui/react-accordion";
-import styles from "./accordion.module.scss";
+import styles from "./Accordion.module.scss";
 
 const Root = Accordion.Root;
 Root.displayName = Accordion.Root.displayName;
