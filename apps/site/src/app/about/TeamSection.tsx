@@ -1,13 +1,17 @@
 import clsx from "clsx";
 import TeamCard from "./TeamCard";
+import { z } from "zod";
+import { SanityImageReference } from "@/lib/sanity/types";
 
 import styles from "./TeamSection.module.scss";
 
 type Member = {
-	name: string;
+	person: {
+		name: string;
+		profilePic: z.infer<typeof SanityImageReference> | null;
+		socials: { link: string } | null;
+	};
 	position: string;
-	image: string;
-	linkedInUrl: string;
 };
 
 interface TeamSection {
@@ -21,11 +25,11 @@ const TeamSection = ({ team, members }: TeamSection) => {
 			<div className={styles.teamGrid}>
 				{members.map((member) => (
 					<TeamCard
-						key={member.name}
-						name={member.name}
+						key={member.person.name}
+						name={member.person.name}
 						position={member.position}
-						image={member.image}
-						linkedInUrl={member.linkedInUrl}
+						image={member.person.profilePic}
+						linkedInUrl={member.person.socials?.link}
 					/>
 				))}
 			</div>

@@ -1,28 +1,78 @@
-const FEED_URL = "https://docs.google.com/spreadsheets/d/";
-const SPREADSHEET_KEY = "1DWCOQBlzA3mpa2BXYXPmQrF9_-SpoPFbTdDQuCQ83hU";
-const QUERY = "pub";
-const FORMAT = "output=tsv";
+import { z } from "zod";
+import { cache } from "react";
+import { client } from "@/lib/sanity/sanityClient";
+import { SanityImageReference } from "@/lib/sanity/types";
 
-const dataURL = FEED_URL + SPREADSHEET_KEY + "/" + QUERY + "?" + FORMAT;
+const Person = z.object({
+	_type: z.literal("person"),
+	name: z.string(),
+	profilePic: SanityImageReference.nullable(),
+	socials: z
+		.object({
+			link: z.string(),
+		})
+		.nullable(),
+});
 
-const getSheetsData = async (page: string) => {
-	const response = await fetch(dataURL);
+const Department = z.array(
+	z.object({
+		person: Person,
+		position: z.string(),
+	})
+);
 
-	if (response.status !== 200)
-		console.warn(
-			"Error ocurred while fetching schedule data:",
-			response.statusText
+export const Members = z.object({
+	corporate: Department,
+	logistics: Department,
+	marketing: Department,
+	tech: Department,
+});
+
+export const getMembers = cache(async () => {
+	try {
+		return Members.parse(
+			await client.fetch(
+				`*[_type == 'boardYear'] | order(year desc) [0]{
+				corporate[]{
+					person->{
+						_type,
+						name,
+						profilePic,
+						socials[0] {link}
+					},
+					position
+				},
+				logistics[]{
+					person->{
+						_type,
+						name,
+						profilePic,
+						socials[0] {link}
+					},
+					position
+				},
+				marketing[]{
+					person->{
+						_type,
+						name,
+						profilePic,
+						socials[0] {link}
+					},
+					position
+				},
+				tech[]{
+					person->{
+						_type,
+						name,
+						profilePic,
+						socials[0] {link}
+					},
+					position
+				}, 
+			}`
+			)
 		);
-
-	const csv = await response.text();
-	for (const line of csv.split("\n")) {
-		const [key, value] = line.split("\t");
-		if (key === page) {
-			return JSON.parse(value);
-		}
+	} catch (error) {
+		console.error(error);
 	}
-
-	return null;
-};
-
-export const getMembers = async () => await getSheetsData("members");
+});

@@ -20,6 +20,10 @@ export const metadata: Metadata = {
 export default async function Home() {
 	const teamMembers = await getMembers();
 
+	if (teamMembers === undefined) {
+		throw new Error("teamMembers is undefined");
+	}
+
 	return (
 		<div className={styles.about}>
 			<Header title="About Us" />
@@ -48,7 +52,6 @@ export default async function Home() {
 					</div>
 					<div className={clsx(styles.aboutTeams, "container")}>
 						{Object.entries(teamMembers).map(([team, members]) => (
-							// @ts-expect-error
 							<TeamSection key={team} team={team} members={members} />
 						))}
 					</div>

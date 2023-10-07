@@ -1,9 +1,15 @@
+import { z } from "zod";
 /* eslint-disable @next/next/no-img-element */
 import type { StaticImageData } from "next/image";
 import clsx from "clsx";
 // could we replace with something like simple-icons (https://github.com/simple-icons/simple-icons)?
-import linkedinLogo from "@/lib/common/assets/icons/linkedin.svg";
+import linkedinLogo from "@/lib/common/assets/linkedin-logo.svg";
 import blank from "./blank.png";
+import { client } from "@/lib/sanity/sanityClient";
+import { SanityImageReference } from "@/lib/sanity/types";
+import imageUrlBuilder from "@sanity/image-url";
+
+const urlBuilder = imageUrlBuilder(client);
 
 import styles from "./TeamCard.module.scss";
 
@@ -16,18 +22,23 @@ import styles from "./TeamCard.module.scss";
 //
 
 //
+
 interface TeamCardProps {
 	name: string;
 	position: string;
-	image: string;
-	linkedInUrl: string;
+	image: z.infer<typeof SanityImageReference> | null;
+	linkedInUrl?: string;
 }
 const TeamCard = ({ name, position, image, linkedInUrl }: TeamCardProps) => {
 	return (
 		<div className={styles.teamCard}>
 			<div className={styles.imagesContainer}>
 				<img
-					src={image || blank.src}
+					src={
+						image
+							? urlBuilder.image(image).size(200, 200).dpr(3).url()
+							: blank.src
+					}
 					className={styles.profilePicture}
 					alt={name}
 				/>
